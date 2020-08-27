@@ -1,12 +1,13 @@
 import React from 'react';
-import {View,TouchableOpacity, Text} from 'react-native';
+import {View,TouchableOpacity, Text,Image} from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import {MaterialCommunityIcons,Entypo} from '@expo/vector-icons';
 
 export default function(){
     return(
         <View style={globalStyles.singleOrder} >
-                <View style={globalStyles.service_image} ></View>
+                <Image style={globalStyles.service_image} source={require('../assets/br.jpg')} />
+                {/* <View style={globalStyles.service_image} ></View> */}
                 <View style={globalStyles.details} >
                     <Text style={globalStyles.textHeader} >
                         Order date

@@ -1,13 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
-import {Entypo} from "@expo/vector-icons";
+import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 export default function SingleService(){
     return(
         <View style={globalStyles.form} >
             <View style={globalStyles.service} >
-                <View style={globalStyles.service_image} ></View>
+                <Image style={globalStyles.service_image} source={require('../assets/br.jpg')} />
                 <View style={globalStyles.details} >
                     <Text style={globalStyles.textHeader} >
                         Service title
@@ -16,7 +16,7 @@ export default function SingleService(){
                     Service detailsService detailsService detailsService
                     </Text>
                     <TouchableOpacity>
-                        <Entypo style={globalStyles.icon_f} name="pin" size={24} color="black" />
+                        <MaterialCommunityIcons style={globalStyles.icon} name="eye" size={24} color="black" />
                     </TouchableOpacity>
                 </View>
             </View>

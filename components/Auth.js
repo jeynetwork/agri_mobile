@@ -5,9 +5,7 @@ import Login from './Forms/Login';
 export default function Auth(){
     return(
         <View>
-            <Text style={styles.Text} >
-                <Login/>
-            </Text>
+            <Login/>
         </View>
     )
 }

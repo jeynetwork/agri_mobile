@@ -8,10 +8,10 @@ export default function(){
             <Text style={globalStyles.text} >username</Text>
             <TextInput placeholder='Username ...' style={globalStyles.inputText} ></TextInput>
             <Text style={globalStyles.text} >Password</Text>
-            <TextInput placeholder='Password' style={styles.inputText} ></TextInput>
+            <TextInput placeholder='Password' style={globalStyles.inputText}></TextInput>
             
             <TouchableOpacity style = {globalStyles.button} >
-                <Text>Login</Text>
+                <Text style={globalStyles.button_text} >Login</Text>
             </TouchableOpacity>
             
             <Text style={globalStyles.center} >Not yet registered?</Text>
