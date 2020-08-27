@@ -11,8 +11,3 @@ export default function Auth(){
         </View>
     )
 }
-const styles = StyleSheet.create({
-    Text:{
-        fontStyle:'bold'
-    }
-})

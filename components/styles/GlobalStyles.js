@@ -55,8 +55,8 @@ const globalStyles = StyleSheet.create({
         backgroundColor:"whitesmoke",
         borderRadius:4,
         elevation:3,
-        shadowColor:"#000",
-        shadowOffset:"#000"
+        // shadowColor:"#000",
+        // shadowOffset:"#000"
         },
     buttons:{
         marginTop:10,
@@ -78,7 +78,7 @@ const globalStyles = StyleSheet.create({
     },
     singleOrder:{
         width:'100%',
-        flexDirection:"column",
+        flexDirection:"row",
         backgroundColor:"whitesmoke",
         padding:10,
         borderRadius:4

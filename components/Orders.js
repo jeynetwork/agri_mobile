@@ -12,8 +12,3 @@ export default function Orders(){
         </View>
     )
 }
-const styles = StyleSheet.create({
-    Text:{
-        fontStyle:'bold'
-    }
-})

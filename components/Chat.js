@@ -11,7 +11,4 @@ export default function Auth(){
     )
 }
 const styles = StyleSheet.create({
-    Text:{
-        fontStyle:'bold'
-    }
 })

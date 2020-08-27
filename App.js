@@ -15,7 +15,7 @@ export default function App() {
       {/* <Register/> */}
       {/* <Products/> */}
       {/* <Services/> */}
-      <Orders/>
+      {/* <Orders/> */}
     </View>
   );
 }
