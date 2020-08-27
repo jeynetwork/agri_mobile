@@ -1,12 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
+import SingleProduct from './Products/SingleProduct';
 
 export default function Auth(){
     return(
         <View>
-            <Text style={styles.Text} >
-                Here is my products page
-            </Text>
+            <SingleProduct/>
         </View>
     )
 }

@@ -1,12 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
+import Order from './Orders/Order'
+import globalStyles from './styles/GlobalStyles';
 
-export default function Auth(){
+export default function Orders(){
     return(
-        <View>
-            <Text style={styles.Text} >
-                Here is my orders page
-            </Text>
+        <View style={globalStyles.form} >
+            <Order/>
+            <Text>.</Text>
+            <Order/>
         </View>
     )
 }
