@@ -2,9 +2,12 @@ import React from 'react';
 import {StyleSheet , View, Text, TextInput, TouchableOpacity} from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 
-export default function(){
+export default function({navigation}){
+    const register = ()=>{
+        navigation.navigate('Register');
+    }
     return(
-        <View style = {globalStyles.form} >
+        <View style = {globalStyles.container} >
             <Text style={globalStyles.text} >username</Text>
             <TextInput placeholder='Username ...' style={globalStyles.inputText} ></TextInput>
             <Text style={globalStyles.text} >Password</Text>
@@ -15,7 +18,7 @@ export default function(){
             </TouchableOpacity>
             
             <Text style={globalStyles.center} >Not yet registered?</Text>
-            <TouchableOpacity><Text style={globalStyles.center_r} >Register here</Text></TouchableOpacity>
+            <TouchableOpacity onPress={register} ><Text style={globalStyles.center_r} >Register here</Text></TouchableOpacity>
         </View>
     )
 }

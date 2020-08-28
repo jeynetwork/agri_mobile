@@ -8,17 +8,10 @@ const globalStyles = StyleSheet.create({
         // borderWidth:1,
         // borderColor:'#CCC',
         borderRadius:4,
-        marginTop:15,
+        marginTop:0,
         flex:1,
         flexDirection:"column"
         // backgroundColor:"#01292e0a"
-    },container:{
-        width:'100%',
-        padding:15,
-        borderWidth:1,
-        borderColor:'#CCC',
-        borderRadius:4,
-        marginTop:15
     },
     text:{
         marginTop:10
@@ -35,8 +28,7 @@ const globalStyles = StyleSheet.create({
         backgroundColor:'#01292e',
         marginTop:15,
         borderRadius:4,
-        color:'white',
-        textAlign:'center'
+        alignSelf:'center'
     },
     center:{
         textAlign:'center',
@@ -64,11 +56,7 @@ const globalStyles = StyleSheet.create({
     image:{
         marginTop:15,
         height:250,
-        backgroundColor:"whitesmoke",
-        // objectFit:"contain",
-        elevation:3,
-        // shadowColor:"#000",
-        // shadowOffset:"#000"
+        backgroundColor:"whitesmoke"
         },
     buttons:{
         marginTop:10,
@@ -93,7 +81,7 @@ const globalStyles = StyleSheet.create({
         width:'100%',
         height:130,
         flexDirection:"row",
-        backgroundColor:'whitesmoke',
+        backgroundColor:'white',
         borderWidth:1,
         borderColor:"#CCC",
         borderRadius:4,
@@ -102,7 +90,7 @@ const globalStyles = StyleSheet.create({
     singleOrder:{
         width:'100%',
         flexDirection:"row",
-        backgroundColor:"whitesmoke",
+        backgroundColor:"white",
         borderWidth:1,
         borderColor:"#CCC",
         padding:10,
@@ -129,13 +117,25 @@ const globalStyles = StyleSheet.create({
         width:'100%',
         backgroundColor:"whitesmoke",
         // position:"absolute",
-        bottom: -7,
         borderTopWidth:1,
         borderTopColor:"#ccc",
         flexDirection:'row',
         justifyContent:'center',
-        flex:.13
-    }
+        flex:.1
+    },containers:{
+        flex:.9,
+        padding:10,
+        flexDirection:'column',
+        paddingBottom:100,
+    },container:{
+        width:'100%',
+        padding:10,
+        borderWidth:1,
+        borderColor:'#c4c4c4',
+        backgroundColor:'white',
+        borderRadius:4,
+        marginTop:5
+    },
 });
 
 export default globalStyles

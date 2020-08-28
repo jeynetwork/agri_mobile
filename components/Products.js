@@ -2,12 +2,17 @@ import React from 'react';
 import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
 import SingleProduct from './Products/SingleProduct';
 import globalStyles from './styles/GlobalStyles';
+import {Entypo, MaterialCommunityIcons, Zocial} from "@expo/vector-icons"
+import { LongPressGestureHandler } from 'react-native-gesture-handler';
+import BottomNav from './BottomNav';
 
-export default function Auth(){
+export default function Products({navigation}){
     return(
         <View style={globalStyles.form} >
-            <SingleProduct/>
-            <SingleProduct/>
+            <View style={globalStyles.containers} >
+                <SingleProduct/>
+            </View>            
+            <BottomNav navigation={navigation} />
         </View>
     )
 }
