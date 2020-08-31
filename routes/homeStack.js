@@ -5,10 +5,15 @@ import Services from '../components/Services';
 import Orders from '../components/Orders';
 import Auth from '../components/Auth';
 import Register from '../components/Register';
+import Header from '../components/Header';
 
 const screens = {
     Home:{
-        screen:Products
+        screen:Products,
+        title:'agrinetwork',
+        navigationOptions:{
+            headerTitle:Header
+        }
     },
     Services:{
         screen:Services

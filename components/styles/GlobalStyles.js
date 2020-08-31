@@ -56,7 +56,8 @@ const globalStyles = StyleSheet.create({
     image:{
         marginTop:15,
         height:250,
-        backgroundColor:"whitesmoke"
+        width:'100%'
+        // backgroundColor:"whitesmoke"
         },
     buttons:{
         marginTop:10,
@@ -72,6 +73,15 @@ const globalStyles = StyleSheet.create({
         paddingTop:18,
         color:"#1a1a2e"
     },
+    b_icon_h:{
+        padding:10,
+        paddingBottom:0,
+        paddingTop:18,
+        color:"#1a1a2e",
+        right:0,
+        position:'absolute'
+        // backgroundColor:'gray'
+    },
     icon_f:{
         paddingLeft:0,
         marginTop:5,
@@ -81,7 +91,6 @@ const globalStyles = StyleSheet.create({
         width:'100%',
         height:130,
         flexDirection:"row",
-        backgroundColor:'white',
         borderWidth:1,
         borderColor:"#CCC",
         borderRadius:4,
@@ -90,7 +99,6 @@ const globalStyles = StyleSheet.create({
     singleOrder:{
         width:'100%',
         flexDirection:"row",
-        backgroundColor:"white",
         borderWidth:1,
         borderColor:"#CCC",
         padding:10,
@@ -116,7 +124,8 @@ const globalStyles = StyleSheet.create({
         height:75,
         width:'100%',
         backgroundColor:"whitesmoke",
-        // position:"absolute",
+        position:"absolute",
+        bottom:-9,
         borderTopWidth:1,
         borderTopColor:"#ccc",
         flexDirection:'row',
@@ -126,16 +135,34 @@ const globalStyles = StyleSheet.create({
         flex:.9,
         padding:10,
         flexDirection:'column',
-        paddingBottom:100,
+        paddingBottom:100
     },container:{
         width:'100%',
         padding:10,
         borderWidth:1,
         borderColor:'#c4c4c4',
-        backgroundColor:'white',
         borderRadius:4,
         marginTop:5
     },
+    Header:{
+        flexDirection:'row',
+        flex:1,
+        paddingBottom:20
+    },
+    HeaderText:{
+        fontWeight:"bold",
+        alignSelf:"flex-end",
+        position:'absolute',
+        textTransform:'uppercase'
+    },
+    HeaderIcons:{
+        position:'absolute',
+        right:0,
+        bottom:0,
+        width:'11%',
+        // backgroundColor:'red',
+        flexDirection:'row'
+    }
 });
 
 export default globalStyles
