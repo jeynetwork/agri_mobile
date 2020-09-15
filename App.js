@@ -4,12 +4,16 @@ import { StyleSheet, TouchableWithoutFeedback, View,ScrollView } from 'react-nat
 import Navigator from './routes/homeStack';
 import BottomNav from './components/BottomNav'
 import PropTypes from 'prop-types';
+import {Provider} from 'react-redux';
+import store from './components/redux/Store';
 
 export default function App() {
   return (
-    <View style={styles.contain} >
-        <Navigator/>
-    </View>
+    <Provider store={store} >
+      <View style={styles.contain} >
+          <Navigator/>
+      </View>
+    </Provider>
   );
 }
 

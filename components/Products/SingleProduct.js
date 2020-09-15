@@ -2,34 +2,18 @@ import React,{useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import {Ionicons, MaterialCommunityIcons, AntDesign, Feather} from '@expo/vector-icons';
+import {connect} from 'react-redux';
+import {view_all_products} from '../redux/actions/products_actions';
 
-export default function SingleProduct(){
+function SingleProduct(props){
     
-    const [isLoading, setIsloading] = useState(true);
-    const [data, setData] = useState([]);
+    const data = props.allProducts
     
-    const options = {
-        method:'GET',
-        headers:{
-            'ContentType':'application/json'
-        },
-        body:JSON.stringify(data)
-    }
-    
-    useEffect(()=>{
-        fetch('http://localhost:4000/agrinetwork/products')
-            .then((response)=>response.json())
-            .then((json)=>setData(json))
-            .catch(error=>console.error(error))
-            .finally(()=>setIsloading(false))
-    },[]);
-    
-    console.log(data);
     
     return(
             <FlatList
                 data = {data}
-                keyExtractor = {({id}, index)=>id}
+                keyExtractor = {({id})=>id}
                 renderItem={({item})=>(
                     <View style={globalStyles.container} >
                         <Text style={globalStyles.topHeader}>
@@ -52,3 +36,16 @@ export default function SingleProduct(){
             />
     )
 }
+
+const mapStateToProps = (state)=>{
+    return{
+        allProducts:state.product.products
+    }
+    }
+    const mapDispatchToProps = (dispatch)=>{
+    return{
+        viewProducts:dispatch(view_all_products),
+    }
+    }
+    export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
+    
