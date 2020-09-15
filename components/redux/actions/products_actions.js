@@ -1,4 +1,4 @@
-import {NEW_PRODUCT,VIEW_PRODUCTS,VIEW_PRODUCT,EDIT_PRODUCT,DELETE_PRODUCT} from './types';
+import {NEW_PRODUCT,VIEW_PRODUCTS,VIEW_PRODUCT,EDIT_PRODUCT,DELETE_PRODUCT, ERROR} from './types';
 import axios from 'axios';
 import store from '../Store';
 
@@ -17,7 +17,7 @@ export const new_product = (newProduct)=>{
 }
 export const view_products = ()=>{
     axios
-        .get('http://localhost:4000/agrinetwork/products/my_products')
+        .get('http://192.168.0.2:4000/agrinetwork/products/my_products')
         .then(res=>
             store.dispatch({
                 type:VIEW_PRODUCTS,
@@ -27,12 +27,14 @@ export const view_products = ()=>{
 }
 export const view_all_products = ()=>{
     axios
-        .get('http://localhost:4000/agrinetwork/products')
+        .get('http://192.168.0.2:4000/agrinetwork/products')
         .then(res=>
             store.dispatch({
                 type:VIEW_PRODUCTS,
                 payload: res.data
             })
+        ).catch(err=>
+            console.log(err)
         )
 }
 export const view_product = (id)=>{

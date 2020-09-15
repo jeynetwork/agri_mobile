@@ -13,6 +13,9 @@ const globalStyles = StyleSheet.create({
         flexDirection:"column"
         // backgroundColor:"#01292e0a"
     },
+    bold:{
+        fontWeight:'bold'
+    },
     text:{
         marginTop:10
     },
@@ -65,7 +68,19 @@ const globalStyles = StyleSheet.create({
     },
     icon:{
         padding:10,
-        color:"#1a1a2e"
+        color:"#1a1a2e",
+        // fontSize:20,
+        position:'relative',
+    },
+    icon_t:{
+        padding:10,
+        color:"#1a1a2e",
+        fontSize:20,
+        position:'relative',
+    },
+    relativeHText:{
+        position:'relative',
+        top:-2
     },
     b_icon:{
         padding:18,
@@ -132,7 +147,7 @@ const globalStyles = StyleSheet.create({
         justifyContent:'center',
         flex:.1
     },containers:{
-        flex:.9,
+        flex:1,
         padding:10,
         flexDirection:'column',
         paddingBottom:100

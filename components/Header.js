@@ -3,9 +3,10 @@ import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
 import globalStyles from './styles/GlobalStyles';
 import {Octicons,MaterialCommunityIcons} from '@expo/vector-icons';
 
-export default function Header({navigation}){
+export default function Header(props){
     const account = ()=>{
-        navigation.navigate('Account');
+        // props.navigation.navigate('Account');
+        console.log('hey')
     }
     return(
         <View style={globalStyles.Header} >

@@ -10,6 +10,8 @@ export const VIEW_ADD = 'VIEW_ADD';
 export const EDIT_ADD = 'EDIT_ADD';
 export const DELETE_ADD = 'DELETE_ADD';
 
+export const ERROR = 'ERROR';
+
 export const NEW_ORDER = 'NEW_ORDER';
 export const VIEW_ORDERS = 'VIEW_ORDERS';
 export const VIEW_ORDER = 'VIEW_ORDER';

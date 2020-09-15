@@ -15,10 +15,10 @@ function SingleProduct(props){
                 data = {data}
                 keyExtractor = {({id})=>id}
                 renderItem={({item})=>(
-                    <View style={globalStyles.container} >
+                    <View style={globalStyles.container} key={item._id} >
                         <Text style={globalStyles.topHeader}>
                             <Ionicons style={globalStyles.icon} name="md-bookmark" size={24} color="black" />
-                            {item.name} / <strong>{item.category}</strong>
+                            <Text>{item.name}</Text> / <Text style={globalStyles.bold} >{item.category}</Text>
                         </Text>
                         <Image style={globalStyles.image} source={require('../assets/br.jpg')} />
 
