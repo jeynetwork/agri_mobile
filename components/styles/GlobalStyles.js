@@ -43,16 +43,17 @@ const globalStyles = StyleSheet.create({
         color:"blue"
     },
     inputText:{
-        borderWidth:1,
+        borderBottomWidth:1,
         padding:10,
         borderColor:"#CCC",
-        borderRadius:4,
         marginTop:6,
         borderStyle:'solid'
     },
     button_text:{
         color:'white',
-        textAlign:"center"
+        textAlign:"center",
+        justifyContent: "center",
+        alignItems: "center"
     },
     topHeader:{
         marginTop:0
@@ -240,8 +241,10 @@ const globalStyles = StyleSheet.create({
         flexDirection:'row'
     },
     sbt_btn_txt:{
+        textAlign:"center",
         color:'white',
-        textAlign:'center'
+        justifyContent: "center",
+        alignItems: "center"
     },
     btn_icon:{
         paddingRight:10
@@ -263,13 +266,13 @@ const globalStyles = StyleSheet.create({
     link_l:{
         color:'blue',
         position:'relative',
-        top:'-5px'
+        top:-5
     },
     top_label:{
         marginLeft:10,
         width:'80%',
         position:'relative',
-        top:'-5px'
+        top:-5
     },
     map:{
         width:100,

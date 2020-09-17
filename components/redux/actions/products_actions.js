@@ -6,7 +6,7 @@ import store from '../Store';
 
 export const new_product = (newProduct)=>{
     axios
-        .post('http://localhost:4000/agrinetwork/products', newProduct)
+        .post('http://192.168.0.2:4000/agrinetwork/products', newProduct)
         .then(res=>
             store.dispatch({
                 type:NEW_PRODUCT,
@@ -30,7 +30,7 @@ export const view_products = ()=>{
 }
 export const view_all_products = ()=>{
     axios
-        .get('http://localhost:4000/agrinetwork/products')
+        .get('http://192.168.0.2:4000/agrinetwork/products')
         .then(res=>
             store.dispatch({
                 type:VIEW_PRODUCTS,
@@ -41,7 +41,7 @@ export const view_all_products = ()=>{
         )
 }
 export const view_product = (id)=>{
-    axios.get(`http://localhost:4000/agrinetwork/products/${id}`)
+    axios.get(`http://192.168.0.2:4000/agrinetwork/products/${id}`)
         .then(res=>
             store.dispatch({
                 type:VIEW_PRODUCT,
@@ -53,7 +53,7 @@ export const view_product = (id)=>{
         })
 }
 export const edit_product = (id)=>{
-    axios.put(`http://localhost:4000/agrinetwork/products/${id._id}`)
+    axios.put(`http://192.168.0.2:4000/agrinetwork/products/${id._id}`)
     .then(res=>
         store.dispatch({
             type:EDIT_PRODUCT,
@@ -66,7 +66,7 @@ export const edit_product = (id)=>{
 }
 export const delete_product = (id)=>{
     axios
-        .delete(`http://localhost:4000/agrinetwork/products/${id}`)
+        .delete(`http://192.168.0.2:4000/agrinetwork/products/${id}`)
         .then(res=>
             store.dispatch({
                 type:DELETE_PRODUCT,

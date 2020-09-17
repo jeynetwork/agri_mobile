@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {View, Text, TouchableOpacity, Image, FlatList, TouchableWithoutFeedback} from 'react-native';
+import {View, Text, TouchableOpacity, Image, FlatList, TouchableWithoutFeedback, Alert} from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import {Entypo, MaterialCommunityIcons, AntDesign, FontAwesome5} from '@expo/vector-icons';
 import {connect} from 'react-redux';
@@ -15,6 +15,7 @@ function SingleProduct(props){
         vstate:false,
         id:""
     });
+    
     
     const [Loc, setLoc] = useState({
         ready:false,
@@ -35,7 +36,6 @@ function SingleProduct(props){
             navigator.geolocation.getCurrentPosition(geoSuccess, geoFailure, geoOptions)
     },2000)
     
-    console.log(Loc.where);
     
     const geoSuccess = (position)=>{
         setLoc({
@@ -82,32 +82,38 @@ function SingleProduct(props){
     
     const data = props.allProducts
     const goto = (e)=>{
-        setViewed(Viewed=>{
-            if(Viewed.vstate){
-                return{
-                    ...Viewed,
-                    vstate:false,
-                    "id":""
-                }
-            } else{
-                return{
-                    ...Viewed,
-                    vstate:true,
-                    "id":e._id,
-                    data:e
-                }
-            }
-        })
+        // setViewed(Viewed=>{
+        //     if(Viewed.vstate){
+        //         return{
+        //             ...Viewed,
+        //             vstate:false,
+        //             "id":""
+        //         }
+        //     } else{
+        //         return{
+        //             ...Viewed,
+        //             vstate:true,
+        //             "id":e._id,
+        //             data:e
+        //         }
+        //     }
+        // })
+        console.log("hh")
     }
     const singledata = Viewed.data
-    console.log(singledata);
+
+    const showAlert = ()=>{
+        Alert.alert('Do you really want to submit the order?', `you have ordered for ${Quantity.quantity} ${singledata.name}`,[
+            {text:"Submit", onPress:()=>{console.log("yay")}}
+        ])
+    }
     return(
             <View>
                 {
                     Viewed.vstate===true
                     ?
                             <View style={globalStyles.single_container} key={singledata._id} >
-                                <Map
+                                {/* <Map
                                     google={props.google}
                                     zoom={14}
                                     style={globalStyles.map}
@@ -117,14 +123,14 @@ function SingleProduct(props){
                                         lng: Loc.where.lng
                                     }
                                     }
-                                />
-                                <Text style={globalStyles.topHeader}>
+                                /> */}
+                                <View style={globalStyles.topHeader}>
                                     <Entypo name="chevron-left" size={24} color="blue" onPress={goto} />
                                     <Text style={globalStyles.link_l} onPress={goto}>Back</Text>
                                     <View style={globalStyles.top_label} >
-                                        <Text style={globalStyles.bold} >{singledata.name} / {singledata.category}</Text>
+                                        <Text style={globalStyles.bold} >{singledata.name}  {singledata.category}</Text>
                                     </View>
-                                </Text>
+                                </View>
 
                                 <TouchableWithoutFeedback>
                                     <Image style={globalStyles.image} source={require('../assets/br.jpg')} />
@@ -135,14 +141,14 @@ function SingleProduct(props){
                                     {singledata.description}
                                 </Text>
                                 <Text style={globalStyles.label} >quantity</Text>
-                                <Text style={globalStyles.text}>
-                                    {singledata.quantity}
+                                <View style={globalStyles.text}>
+                                    <Text>{singledata.quantity}</Text>
                                     {
                                         singledata.quantity>1
                                         ?<Text> products</Text>
                                         :<Text> product</Text>
                                     }
-                                </Text>
+                                </View>
                         
                                 <View style={globalStyles.buttons} >
                                     <MaterialCommunityIcons style={globalStyles.icon} name="cart" size={24} color="black" />
@@ -155,7 +161,8 @@ function SingleProduct(props){
                                     <Text>Quantity</Text>
                                     <View style={globalStyles.qty_btns} >
                                         <TouchableOpacity style={globalStyles.decrement} >
-                                            <AntDesign name="caretleft" style={globalStyles.mid_icon} size={24} color="black" onPress={decrement} /></TouchableOpacity>
+                                            <AntDesign name="caretleft" style={globalStyles.mid_icon} size={24} color="black" onPress={decrement} />
+                                        </TouchableOpacity>
                                         <TextInput style={globalStyles.qty_txt} placeholder="eg 3" value={Quantity.quantity} />
                                         <TouchableOpacity style={globalStyles.increment} >
                                             <AntDesign name="caretright" style={globalStyles.mid_icon} size={24} color="black" onPress={increment} /> 
@@ -172,7 +179,7 @@ function SingleProduct(props){
                                         </TouchableOpacity>
                                     </View>
                                     
-                                    <TouchableOpacity style={globalStyles.sbt_btn} >
+                                    <TouchableOpacity style={globalStyles.sbt_btn} onPress={showAlert}>
                                         <MaterialCommunityIcons name="checkbox-multiple-marked" size={24} style={globalStyles.btn_icon} color="white" />
                                         <Text style={globalStyles.sbt_btn_txt} >Complete Order</Text>
                                     </TouchableOpacity>
@@ -184,10 +191,9 @@ function SingleProduct(props){
                         keyExtractor = {({id})=>id}
                         renderItem={({item})=>(
                                 <View style={globalStyles.container} key={item._id} >
-                                    <Text style={globalStyles.topHeader}>
-                                        {/* <Ionicons style={globalStyles.icon} name="md-bookmark" size={24} color="black" /> */}
-                                        <Text>{item.name}</Text> / <Text style={globalStyles.bold} >{item.category}</Text>
-                                    </Text>
+                                    <View style={globalStyles.topHeader}>
+                                        <Text>{item.name}</Text><Text>/</Text><Text style={globalStyles.bold} >{item.category}</Text>
+                                    </View>
 
                                     <TouchableWithoutFeedback onPress={goto.bind(this,item)} >
                                         <Image style={globalStyles.image} source={require('../assets/br.jpg')} />

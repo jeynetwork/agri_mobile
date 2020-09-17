@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import globalStyles from "./styles/GlobalStyles";
-import {Entypo, Ionicons, Zocial} from "@expo/vector-icons"
+import {Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons"
 
 export default function BottomNav({navigation}){
     const home=()=>{
@@ -14,7 +14,7 @@ export default function BottomNav({navigation}){
         navigation.navigate('Orders');
     }
     const account=()=>{
-        // navigation.navigate('Account');
+        navigation.navigate('Account');
     }
     return(
     <View style={globalStyles.navigation} >
@@ -31,6 +31,9 @@ export default function BottomNav({navigation}){
         </TouchableOpacity>
         <TouchableOpacity onPress={services} >
             <Entypo style={globalStyles.b_icon} name="list" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={account}>
+            <MaterialCommunityIcons style={globalStyles.b_icon} name="account-circle" size={24} color="black" />
         </TouchableOpacity>
             
     </View>

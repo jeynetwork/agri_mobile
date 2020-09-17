@@ -1,20 +1,45 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {StyleSheet , View, Text, TextInput, TouchableOpacity} from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
+import {loginUser} from '../redux/actions/auth_actions';
+import {connect} from 'react-redux';
 
-export default function({navigation}){
+function Login({navigation}){
+
+    const [User, setUser] = useState({
+        email:'',
+        category:'',
+        password:''
+    })
+
+    const handleChangeLog = (e)=>{
+        const key = e.target.id;
+        const value = e.target.value
+        setUser((User)=>{
+            return{
+                ...User,
+                [key]:value
+            }
+        })
+        // console.log(User);
+    }
+
+    const onLoginUser = ()=>{
+        loginUser(User);
+    }
+    
     const register = ()=>{
         navigation.navigate('Register');
     }
     return(
         <View style = {globalStyles.container} >
             <Text style={globalStyles.text} >username</Text>
-            <TextInput placeholder='Username ...' style={globalStyles.inputText} ></TextInput>
+            <TextInput placeholder='Username ...' id='email' onChange={handleChangeLog} style={globalStyles.inputText} ></TextInput>
             <Text style={globalStyles.text} >Password</Text>
-            <TextInput placeholder='Password' style={globalStyles.inputText}></TextInput>
+            <TextInput placeholder='Password' id='password' onChange={handleChangeLog} style={globalStyles.inputText}></TextInput>
             
-            <TouchableOpacity style = {globalStyles.button} >
-                <Text style={globalStyles.button_text} >Login</Text>
+            <TouchableOpacity style = {globalStyles.sbt_btn} onClick={onLoginUser}>
+                <Text style={globalStyles.sbt_btn_txt} >Login</Text>
             </TouchableOpacity>
             
             <Text style={globalStyles.center} >Not yet registered?</Text>
@@ -39,3 +64,10 @@ const styles = StyleSheet.create({
         textTransform:"uppercase"
     },
 })
+
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        login_user:(user)=>dispatch(loginUser(user))
+    }
+}
+export default connect(null, mapDispatchToProps)(Login)
