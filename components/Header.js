@@ -5,8 +5,7 @@ import {Octicons,MaterialCommunityIcons} from '@expo/vector-icons';
 
 export default function Header(props){
     const account = ()=>{
-        // props.navigation.navigate('Account');
-        console.log('hey')
+        props.navigation.navigate('Account');
     }
     return(
         <View style={globalStyles.Header} >

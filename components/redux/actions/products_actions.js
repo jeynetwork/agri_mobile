@@ -2,6 +2,8 @@ import {NEW_PRODUCT,VIEW_PRODUCTS,VIEW_PRODUCT,EDIT_PRODUCT,DELETE_PRODUCT, ERRO
 import axios from 'axios';
 import store from '../Store';
 
+
+
 export const new_product = (newProduct)=>{
     axios
         .post('http://localhost:4000/agrinetwork/products', newProduct)
@@ -9,7 +11,8 @@ export const new_product = (newProduct)=>{
             store.dispatch({
                 type:NEW_PRODUCT,
                 payload:res.data
-            })
+            }),
+            browserHistory.push('Services')
         )
         .catch(err=>
             console.log(err)
@@ -17,7 +20,7 @@ export const new_product = (newProduct)=>{
 }
 export const view_products = ()=>{
     axios
-        .get('http://192.168.0.2:4000/agrinetwork/products/my_products')
+        .get('http://localhost:4000/agrinetwork/products/my_products')
         .then(res=>
             store.dispatch({
                 type:VIEW_PRODUCTS,
@@ -27,7 +30,7 @@ export const view_products = ()=>{
 }
 export const view_all_products = ()=>{
     axios
-        .get('http://192.168.0.2:4000/agrinetwork/products')
+        .get('http://localhost:4000/agrinetwork/products')
         .then(res=>
             store.dispatch({
                 type:VIEW_PRODUCTS,

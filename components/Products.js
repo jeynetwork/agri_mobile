@@ -10,7 +10,7 @@ export default function Products({navigation}){
     return(
         <View style={globalStyles.form} >
             <View style={globalStyles.containers} >
-                <SingleProduct/>
+                <SingleProduct navigation={navigation}/>
             </View>            
             <BottomNav navigation={navigation} />
         </View>
