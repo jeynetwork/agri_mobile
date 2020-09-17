@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const globalStyles = StyleSheet.create({
     form:{
@@ -235,17 +236,29 @@ const globalStyles = StyleSheet.create({
         marginTop:10,
         padding:10,
         borderRadius:4,
-        backgroundColor:"blue"
+        backgroundColor:"blue",
+        flexDirection:'row'
     },
     sbt_btn_txt:{
         color:'white',
         textAlign:'center'
+    },
+    btn_icon:{
+        paddingRight:10
+    },
+    row:{
+        flexDirection:'row'
     },
     label:{
         fontWeight:'bold',
         marginTop:10,
         position:'relative',
         top:'10'
+    },
+    label_r:{
+        fontWeight:'bold',
+        position:'relative',
+        top:1
     },
     link_l:{
         color:'blue',
@@ -257,6 +270,10 @@ const globalStyles = StyleSheet.create({
         width:'80%',
         position:'relative',
         top:'-5px'
+    },
+    map:{
+        width:100,
+        height:300
     }
 });
 

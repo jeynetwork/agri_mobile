@@ -1,21 +1,60 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList, TouchableWithoutFeedback} from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
-import {Entypo, MaterialCommunityIcons, AntDesign, Feather} from '@expo/vector-icons';
+import {Entypo, MaterialCommunityIcons, AntDesign, FontAwesome5} from '@expo/vector-icons';
 import {connect} from 'react-redux';
 import {view_all_products, view_product} from '../redux/actions/products_actions';
 import { TextInput } from 'react-native-gesture-handler';
+import { Map, GoogleApiWrapper } from 'google-maps-react';
+
 
 function SingleProduct(props){
 
+        
     const [Viewed, setViewed] = useState({
         vstate:false,
         id:""
     });
     
+    const [Loc, setLoc] = useState({
+        ready:false,
+        where:{lat:null, lng:null},
+        error:null
+    })
+    
+    useEffect(() => {
+            let geoOptions = {
+                enableHighAccuracy:true,
+                timeOut:20000,
+                maximumAge:60*60*24
+            };
+            setLoc({
+                ready:false,
+                error:null
+            });
+            navigator.geolocation.getCurrentPosition(geoSuccess, geoFailure, geoOptions)
+    },2000)
+    
+    console.log(Loc.where);
+    
+    const geoSuccess = (position)=>{
+        setLoc({
+            ready:true,
+            error:null,
+            where:{lat:position.coords.latitude, lng:position.coords.longitude}
+        })
+    }
+    
+    const geoFailure = (err)=>{
+        setLoc({
+            error:err.message
+        })
+    }
+    
     const [Quantity, setQuantity] = useState({
         quantity:"0"
     })
+    
 
     const increment = ()=>{
         setQuantity((Quantity)=>{
@@ -27,7 +66,7 @@ function SingleProduct(props){
     }
     const decrement = ()=>{
         setQuantity((Quantity)=>{
-            if(Quantity<1){
+            if(Quantity.quantity<1){
                 return{
                     ...Quantity,
                     quantity:parseInt(Quantity.quantity)
@@ -68,6 +107,17 @@ function SingleProduct(props){
                     Viewed.vstate===true
                     ?
                             <View style={globalStyles.single_container} key={singledata._id} >
+                                <Map
+                                    google={props.google}
+                                    zoom={14}
+                                    style={globalStyles.map}
+                                    initialCenter={
+                                    {
+                                        lat: Loc.where.lat,
+                                        lng: Loc.where.lng
+                                    }
+                                    }
+                                />
                                 <Text style={globalStyles.topHeader}>
                                     <Entypo name="chevron-left" size={24} color="blue" onPress={goto} />
                                     <Text style={globalStyles.link_l} onPress={goto}>Back</Text>
@@ -115,7 +165,15 @@ function SingleProduct(props){
                                     <View style={globalStyles.qty_btns} >
                                         <Text>On delivery</Text>
                                     </View>
+                                    <View style={globalStyles.qty_btns} >
+                                        <TouchableOpacity  style={globalStyles.row} >
+                                            <FontAwesome5 name="map-marked-alt" style={globalStyles.btn_icon} size={20} color="black" />
+                                            <Text style={globalStyles.label_r} >Chose delivery location</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                    
                                     <TouchableOpacity style={globalStyles.sbt_btn} >
+                                        <MaterialCommunityIcons name="checkbox-multiple-marked" size={24} style={globalStyles.btn_icon} color="white" />
                                         <Text style={globalStyles.sbt_btn_txt} >Complete Order</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -164,5 +222,9 @@ const mapStateToProps = (state)=>{
         viewProduct:(data)=>{dispatch(view_product(data))},
     }
     }
+
+    const WrappedContainer = GoogleApiWrapper({
+        apiKey: "AIzaSyAXkzzDsl-OGFrTqvzm7fmrtPyxV1XAt1o"
+        })(SingleProduct);
+    // export WrappedContainer;
     export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
-    
